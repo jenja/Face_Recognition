@@ -7,11 +7,11 @@ S = HSV(:,:,2); S = S(:);
 V = HSV(:,:,3); V = V(:);
 X = [H S V];
 
-%The best single channel from HSV varies depending on the image
-%Hue (H) is the best channel for image one while Saturation (S)
-% is the best channel for image 2.
-idx = kmeans(H, 2);
+
+idx = kmeans(S, 2);
+temp = reshape(idx, size(I2,1), size(I2, 2)),[];
+%imshow(temp)
 figure;
 imshow(ind2rgb(reshape(idx, size(I2,1), size(I2, 2)), [0 0 1; 0 1 0]))
 
-clear
+%clear
