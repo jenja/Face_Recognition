@@ -15,6 +15,7 @@ Cb = YCbCr(:,:,2);
 Cr = YCbCr(:,:,3);
 
 % Set irrelevent pixels to black
+% Diffrent attempts to get the best result when segmenting
 %YCbCr(  (Cr > (105/255)) & (Cr < (135/255))) = 0;
 Cr(  (Cr > (105/255)) & (Cr < (135/255))) = 0;
 %Cr(  (Cr > (140/255)) & (Cr < (165/255)) ) = 0;
