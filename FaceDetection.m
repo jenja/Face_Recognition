@@ -39,7 +39,7 @@ faceMask = imerode(faceMask, se2);
 
 % Remove holes that can aqure in the face
 MorphFace = imfill(faceMask, 'holes');
-figure, imshow(MorphFace)
+%figure, imshow(MorphFace)
 
 % Removes pixels outside the face
 MorphFace = imerode(MorphFace, se);
@@ -47,10 +47,9 @@ MorphFace = imerode(MorphFace, se2);
 %figure, imshow(MorphFace)
  
 % Convert to RGB and seperate the channels
-RGB = hsv2rgb(HSV);
-R = RGB(:,:,1);
-G = RGB(:,:,2);
-B = RGB(:,:,3);
+R = balanced_im(:,:,1);
+G = balanced_im(:,:,2);
+B = balanced_im(:,:,3);
 
 % Segmentation
 R(MorphFace ~= 1) = 0;
