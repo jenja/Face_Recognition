@@ -7,7 +7,7 @@ close all
 % Change the colorspace to YCbCr
 %This is probebly already done in the tnm034 function
 %later on...but for now we do it here :)
-im = whitebalance(im);
+%im = whitebalance(im);
 
 % Change the colorspace to YCbCr
 %This is probebly already done in the tnm034 function

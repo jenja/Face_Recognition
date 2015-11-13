@@ -2,12 +2,8 @@ function Masked_Face = FaceDetection( im )
 % Detectes faces in a picture and returns a new picture with the background
 % masked.
 
-% White Balance the picture
-% TODO: Optimize later
-balanced_im = whitebalance(im);
-
 % Convert to doublr values
-double_im = im2double(balanced_im);
+double_im = im2double(im);
 
 % Get HSV color channels
 [H, S, V] = rgb2hsv(double_im);
@@ -46,10 +42,10 @@ MorphFace = imerode(MorphFace, se);
 MorphFace = imerode(MorphFace, se2);
 %figure, imshow(MorphFace)
  
-% Convert to RGB and seperate the channels
-R = balanced_im(:,:,1);
-G = balanced_im(:,:,2);
-B = balanced_im(:,:,3);
+% Convert to RGB and seperate the channelsilluminating
+R = double_im(:,:,1);
+G = double_im(:,:,2);
+B = double_im(:,:,3);
 
 % Segmentation
 R(MorphFace ~= 1) = 0;
