@@ -1,5 +1,5 @@
 %Skin segmentation using a combination of HSV and YCbCr
-I=imread('DB0/db0_4.jpg');
+I=imread('DB0/db0_2.jpg');
 I=double(I);
 [hue,s,v]=rgb2hsv(I);
 
@@ -25,6 +25,8 @@ im(:,:,1)=I(:,:,1).*segment;
 im(:,:,2)=I(:,:,2).*segment; 
 im(:,:,3)=I(:,:,3).*segment; 
 figure,imshow(uint8(im));
+
+
 
 clear
 
