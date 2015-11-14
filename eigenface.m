@@ -26,7 +26,7 @@ end
 %Calculate the average face
 avgFace = sum(imgDB,2)./M;
 
-imshow(uint8(reshape(round(avgFace), 303, 241)));
+%imshow(uint8(reshape(round(avgFace), 303, 241)));
 
 %Calculate have much each image differs from the average
 for i = 1:M
@@ -40,18 +40,45 @@ end
 % figure 
 % imshow(uint8(reshape(round(F(:,3)), 303, 241)));
 
-[u,~] = eig(F'*F);
+%PCA - not working
+% [u,~] = eig(F'*F);
+% 
+% d = (u*F')';
+% 
+% for i = 1:M 
+% figure
+% colormap gray
+% imagesc(reshape(d(:,i),303,241)); 
+% end
+% 
+% for i = 1:M
+%     w(:,i) = (imgDB(:,3) - avgFace)./d(:,i);
+%     q(i) = nansum(w(:,i));
+% end
 
-d = (u*F')';
 
-for i = 1:M 
-figure
-colormap gray
-imagesc(reshape(d(:,i),303,241)); 
-end
+%SVD
+
+[U,S,V] = svd(F,0);
 
 for i = 1:M
-    w(:,i) = (imgDB(:,3) - avgFace)./d(:,i);
-    q(i) = nansum(w(:,i));
+    % Normalize to [0, 1]:
+    minimum = min(U(:,i));
+    maximum = max(U(:,i));
+    range = maximum - minimum;
+    array = (U(:,i) - minimum) ./ range;
+
+    % Then scale to [0, 255]:
+%     range =  255;
+%     normalized = (array*range);
+
+    %show
+    figure
+    colormap gray;
+    imagesc(reshape(array,303,241));
+    
 end
+
+
+
 
