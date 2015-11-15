@@ -4,14 +4,24 @@ function id = tnm034( im )
 
 %Create training set
 
+%White balance the image im
+whiteBalanced = GrayWorld(im);
+
+% figure
+% imshow(whiteBalanced)
+% title('resulting gray world');
 
 %Detect face in image im
+detectedFace = FaceDetection(whiteBalanced)
 
+% figure
+% imshow(detectedFace)
+% title('resulting detection');
 
 %Use only the detected face when creating the eyeMaps
 %Create eye maps
-eyeMapC = createEyeMapC(im);
-eyeMapL = createEyeMapL(im);
+eyeMapC = createEyeMapC(detectedFace);
+eyeMapL = createEyeMapL(detectedFace);
 
 %Combine the eye maps
 %This could maybe be improved

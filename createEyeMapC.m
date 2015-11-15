@@ -5,7 +5,7 @@ function eyeMapC = createEyeMapC( im )
 
 close all
 
-im = whitebalance(im);
+%im = whitebalance(im);
 
 % Change the colorspace to YCbCr
 %This is probebly already done in the tnm034 function
