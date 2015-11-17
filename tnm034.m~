@@ -5,21 +5,34 @@ function id = tnm034( im )
 %Create training set
 
 
+
 %White balance the image im
 WB = GrayWorld(im);
 
-% Checks which value whos lowest of the original image or the Gray World-image
-imDiv = GrayWorldDiv(im);
-wbDiv = GrayWorldDiv(WB);
+% Checks which value whos lowest of the original image or the Grayworrld
+% balanced image
+div1 = GrayWorldDiv(im);
+div2 = GrayWorldDiv(WB);
 
-whiteBalanced = BestIm(imDiv, wbDiv, im, WB);
+DivArr = [div1 div2]
+
+[~,I] = min(abs(DivArr-1));
+
+LowestDiv = DivArr(I)
+
+if LowestDiv == div1
+    whiteBalanced = im;
+else
+    whiteBalanced = im;
+end
+
 
 % figure
 % imshow(whiteBalanced)
 % title('resulting gray world');
 
 %Detect face in image im
-detectedFace = FaceDetection(whiteBalanced);
+detectedFace = FaceDetection(whiteBalanced)
 
 % figure
 % imshow(detectedFace)
