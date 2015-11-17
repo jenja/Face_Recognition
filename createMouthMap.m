@@ -33,8 +33,9 @@ MouthMap = MouthMap./ max(max(MouthMap));
 g = strel('disk',4);
 % Dilalate, need a better size 
 MouthMap = (imdilate(MouthMap,g));
-
-%imshow(MouthMap)
+figure
+imshow(MouthMap)
+title('Mouth');
 
 end
 

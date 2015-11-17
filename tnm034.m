@@ -12,7 +12,7 @@ whiteBalanced = GrayWorld(im);
 % title('resulting gray world');
 
 %Detect face in image im
-detectedFace = FaceDetection(whiteBalanced)
+detectedFace = FaceDetection(whiteBalanced);
 
 % figure
 % imshow(detectedFace)
@@ -33,7 +33,7 @@ title('resulting eyeMap');
 
 
 %Create mouthMap
-
+mouth = createMouthMap(detectedFace);
 %Use the maps to crop image im
 
 %Use eigenfaces for recognition
