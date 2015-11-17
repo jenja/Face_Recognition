@@ -6,7 +6,7 @@
 %the smallest euklidian distance, but not working yet
 close all;
 
-M = 3;
+M = 16;
 p = 303*241;
 imgDB = zeros(p, M);
 F = imgDB;
@@ -30,7 +30,7 @@ avgFace = sum(imgDB,2)./M;
 
 %Calculate have much each image differs from the average
 for i = 1:M
-   F(:,i) = (imgDB(:,i) - avgFace)/sqrt(2); 
+   F(:,i) = (imgDB(:,i) - avgFace)/sqrt(M); 
 end
 
 % figure 
@@ -60,25 +60,69 @@ end
 %SVD
 
 [U,S,V] = svd(F,0);
+ 
+% for i = 1:M
+%     %Show normalized eigenface
+%     figure
+%     imshow(reshape(U(:,i),303,241),[]);
+% end
 
-for i = 1:M
-    % Normalize to [0, 1]:
-    minimum = min(U(:,i));
-    maximum = max(U(:,i));
-    range = maximum - minimum;
-    array = (U(:,i) - minimum) ./ range;
+w = imgDB'*U;
+% for i = 1:M
+%     w(i,1) = (imgDB(:,1)-avgFace)./U(:,1);
+% end
+%  im = zeros(303*241,1);
+% for i = 1:M
+%     %reconstruct an image
+%     figure
+%     im = im + w(i,6)*U(:,i);
+%     imshow(reshape(imcomplement(im./M),303,241),[]);
+% end
+% figure
+% imshow(reshape(imgDB(:,6),303,241),[]);
 
-    % Then scale to [0, 255]:
-%     range =  255;
-%     normalized = (array*range);
+% Find the closest match
+inImg = imgDB(:,1);
 
-    %show
-    figure
-    colormap gray;
-    imagesc(reshape(array,303,241));
-    
+wImg = w(:,16);
+
+index = 0;
+winner = 99999;
+for i = 1:15
+   near = wImg - w(:,i);
+   near = sqrt(near'*near);
+   if near < winner 
+       winner = near;
+       index = i;
+   end
+end
+
+threshold = 1000;
+if winner > threshold
+    index = 0;
 end
 
 
 
+
+
+
+
+
+%%
+%PCA 
+% cov(F);
+% C=F'*F;
+% [V,D]=eig(C);
+% [U,D]=eig(C);
+% V=FU;
+%  
+% V=F*U;
+% close all;
+% U=V;
+% for i = 1:M
+%     %Show normalized eigenface
+%     figure
+%     imshow(reshape(U(:,i),303,241),[]);
+% end
 
