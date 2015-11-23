@@ -5,6 +5,8 @@ function out = YCbCr_vs2( im )
 
 % Whitebalande the picture
 im = whitebalance(im);
+imshow(im);
+figure;
 
 % Convert pixelvalues to doubles
 im = im2double(im);

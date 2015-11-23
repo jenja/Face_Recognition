@@ -32,9 +32,12 @@ MouthMap = MouthMap./ max(max(MouthMap));
 % Defines the area where the dilation
 g = strel('disk',2);
 % Dilalate, need a better size 
-%MouthMap = (imdilate(MouthMap,g));
 
+%MouthMap = (imdilate(MouthMap,g));
+%figure
 %imshow(MouthMap)
+%title('Mouth');
+
 
 end
 

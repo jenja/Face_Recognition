@@ -40,7 +40,6 @@ eyeMap = eyeMapC.*eyeMapL;
 
 %Create mouthMap
 mouthMap = createMouthMap(detectedFace);
-
 %Use the maps to crop image im
 
 %Use eigenfaces for recognition
