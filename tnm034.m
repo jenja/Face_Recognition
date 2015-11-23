@@ -42,6 +42,13 @@ eyeMap = eyeMapC.*eyeMapL;
 mouthMap = createMouthMap(detectedFace);
 %Use the maps to crop image im
 
+transIm = transformImage( eyeMap, whiteBalanced );
+
+% figure
+% imshow(transIm)
+% title('Transformed image');
+
+
 %Use eigenfaces for recognition
 
 %return the id of the image
