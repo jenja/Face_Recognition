@@ -25,9 +25,9 @@ g = strel('disk',15, 8);
 
 eyeMapL = (imdilate(Y,g))./(imerode(Y,g) + 1);
 
-figure
-imshow(eyeMapL)
-title('EyeMapL');
+% figure
+% imshow(eyeMapL)
+% title('EyeMapL');
 
 
 end

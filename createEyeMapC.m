@@ -23,9 +23,9 @@ Cr2 = 1 - Cr;
 
 eyeMapC = (1/3)*(Cb.*Cb +  Cr2.*Cr2 + Cb./Cr );
 
-figure
-imshow(eyeMapC)
-title('EyeMapC');
+% figure
+% imshow(eyeMapC)
+% title('EyeMapC');
 
 
 % figure
