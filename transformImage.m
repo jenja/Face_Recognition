@@ -1,6 +1,6 @@
 function transIm = transformImage( map, im )
 % Transform the image 
-%   The transformations is rotation, rotation and scaling
+% The transformations is rotation, rotation and scaling
 
 % Cinvert to binary image
 bweyeMap = im2bw(map, 0.3);
