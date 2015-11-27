@@ -1,7 +1,8 @@
 function id = match(im)
-%match image with the database
-%id = 0 if no match
-%id = index if match
+% MATCH
+%   Match image with the database and return an integer.
+%   id = 0 if no match
+%   id = index if match
 
 %Load training set
 load weights.mat

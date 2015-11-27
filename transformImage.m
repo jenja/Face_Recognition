@@ -1,8 +1,9 @@
 function transIm = transformImage( map, im )
-% Transform the image 
-% The transformations is rotation, rotation and scaling
+% TRANSFORM IMAGE
+%   Transform the image, inputs are the image and the eye map. 
+%   The transformations is rotation, rotation and scaling
 
-% Cinvert to binary image
+% Convert to binary image
 bweyeMap = im2bw(map, 0.3);
 
 % Get size of row and column

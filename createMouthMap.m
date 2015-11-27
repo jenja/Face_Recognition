@@ -1,6 +1,7 @@
 function MouthMap = createMouthMap( im )
-% Returns a map for the mouth in the picture
-% An input image im, return the found eye map
+% MOUTH MAP
+%   Returns a map for the mouth in the picture
+%   An input image im, return the found eye map
 
 % Change the colorspace to YCbCr
 YCbCr = rgb2ycbcr(im);

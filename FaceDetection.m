@@ -1,6 +1,8 @@
 function Masked_Face = FaceDetection( im )
-% Detectes faces in a picture and returns a new picture with the background
-% masked.
+% FACE DETECTION
+%   Detectes faces in a picture and returns a new picture with the 
+%   background masked. It is based on the HSV color model.
+%   This function detects skin regions by using the Hue channel.
 
 % Convert to doublr values
 double_im = im2double(im);

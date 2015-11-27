@@ -1,6 +1,6 @@
 function div = GrayWorldDiv( im )
-%UNTITLED Summary of this function goes here
-%   Detailed explanation goes here
+% GRAY WORLD
+%   
 
 % Convert to HSV
 HSV = rgb2hsv(im);
@@ -33,7 +33,7 @@ H(~Mask) = 0;
 S(~Mask) = 0;
 V(~Mask) = 0;
 
-% Stich the channels back to gather
+% Stich the channels back together
 Masked_Face = cat(3, H, S, V);
 
 % Convert back to RGB

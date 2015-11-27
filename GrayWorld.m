@@ -1,6 +1,8 @@
 function white_balanced = GrayWorld( im )
-%UNTITLED Summary of this function goes here
-%   Detailed explanation goes here
+% GRAY WORLD
+%   This function estimates the illumination by looking at the
+%   the average color and comparing it to gray. This is used to 
+%   color balance the image.
 
 d_im = im2double(im);
 
@@ -19,7 +21,7 @@ aB = avgGrey/avgB;
 
 [x, y, z]=size(im);
 
-% Adjustiment the channels
+% Adjust the channels after the adjustment factors
 for i=1:x
     for j=1:y
         d_im(i, j, 1) = d_im(i, j, 1)*aR;

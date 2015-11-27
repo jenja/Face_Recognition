@@ -1,13 +1,9 @@
 function eyeMapL = createEyeMapL( im )
-%The function should find the luma(?) eye map from
-%an input image im, return the found eye map
+% EYE MAP LUMA
+%   The function should find the luma eye map from
+%   an input image im, return the found eye map
 
 close all
-
-% Change the colorspace to YCbCr
-%This is probebly already done in the tnm034 function
-%later on...but for now we do it here :)
-%im = whitebalance(im);
 
 % Change the colorspace to YCbCr
 %This is probebly already done in the tnm034 function

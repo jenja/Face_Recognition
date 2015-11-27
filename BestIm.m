@@ -1,6 +1,7 @@
 function im = BestIm( imDiv, wbDiv, im, WB )
-%UNTITLED2 Summary of this function goes here
-%   Detailed explanation goes here
+% BEST IMAGE
+%   Return the image - either the original of the Gray World
+%   with the value closes to one.
 
 % Put the vaules in an array
 DivArr = [imDiv wbDiv];

@@ -1,7 +1,8 @@
-%Run the first time, or if changing the DB,
-%to create the training set. This will create 
-%two matrices with weights and 
-%eigenvectors which are loaded into match.m
+% CREATE DATABASE
+%   Run the first time, or if changing the DB,
+%   to create the training set. This will create 
+%   two matrices with weights and 
+%   eigenvectors which are loaded into match.m
 
 close all;
 
