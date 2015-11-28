@@ -44,7 +44,7 @@ table = sortrows(stats, 3, 'descend');
 % radii = diameters/2;
 
 
-Mouth = round(table2array(table(1,1)));
+Mouth = round(table2array(table(1,1)))
 
 
 end

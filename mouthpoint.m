@@ -4,8 +4,9 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
 close all
 
-im = imread('DB1/db1_16.jpg');
+%im = imread('DB1/db1_16.jpg');
 %im = imread('DB0/db0_3.jpg');
+im = imread('DB2/bl_01.jpg');
 
 WB = GrayWorld(im);
 

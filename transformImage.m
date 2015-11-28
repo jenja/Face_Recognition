@@ -9,12 +9,15 @@ bweyeMap = im2bw(map, 0.3);
 [row, col] = size(bweyeMap);
 
 % Remove everyting over the eyes
-bweyeMap(1:(floor(row/2 - 50)), :) = 0;
-bweyeMap(floor(row/2 + 50):row, :) = 0;
+bweyeMap(1:(floor(row/4)), :) = 0;
+bweyeMap(floor(2*row/4):row, :) = 0;
+
+figure
+imshow(bweyeMap)
 
 % Remove everyting under the eyes
-bweyeMap(:, 1:(floor(col/2 - 100))) = 0;
-bweyeMap(:, floor(col/2 + 100):col) = 0;
+% bweyeMap(:, 1:(floor(col/2 - 100))) = 0;
+% bweyeMap(:, floor(col/2 + 100):col) = 0;
 
 
 se = strel('disk', 1);
@@ -29,7 +32,7 @@ stats = regionprops('table',bweyeMap,'Centroid', 'MajorAxisLength','MinorAxisLen
 
 % Sort table by eyesize
 table = sortrows(stats, 3, 'descend');
-table = table(1:2, :);
+table = table(1:2, :)
 
 % Array of the eyes
 eyeArray = sort(round(table2array(table(1:2, 1))));
@@ -45,7 +48,15 @@ eyeMoveX = round(col/2) - round(eyeMid(1,1));
 eyeMoveY = round(row/2) - round(eyeMid(1,2));
 
 % Translate the midpoint of the eye to the middle of the image
-imTrans = imtranslate(im,[round(eyeMoveX), round(eyeMoveY)], 'FillValues', 1);
+imTrans = imtranslate(im,[round(eyeMoveX), round(eyeMoveY)]);
+
+%[X, Y, ~] = size(imTrans)
+
+cropline = sqrt(pow2(eyeMoveX + eyeMoveY))
+
+%imTrans =  imcrop(imTrans, [eyeMid(1,1) eyeMid(1,2) cropline*2 cropline*2.5]);
+
+%[X, Y, ~] = size(imTrans)
 
 % Lefteyes x-value and the edge om the image in x-led 
 lefteye2egde = leftEye;
@@ -64,21 +75,24 @@ theta = acos(costheta);
 rotim = imrotate(imTrans,-theta, 'bilinear', 'crop');
 
 % Prefered lenght between the eyes 
-prefLenght = 50;
+prefLenght = 100;
 
 % Scalefactor
 eyeScale = rlVec(1,1)/prefLenght;
 
-% If the scalefactor is over +-10%. It will limit it.
-if eyeScale < 0.9
-    eyeScale = 0.9;
-elseif eyeScale > 1.1
-    eyeScale = 1.1;
-end
-
 % Scale the image
-transIm = imresize(rotim, eyeScale, 'bicubic');;
+transIm = imresize(rotim, eyeScale, 'bicubic');
 
+% [X, Y, ~] = size(transIm)
+% 
+% cropline = sqrt(pow2(eyeMoveX + eyeMoveY))
+% 
+% transIm =  imcrop(transIm, [col/2-60 row/2 cropline*2 cropline*2.5]);
+% 
+% [X, Y, ~] = size(transIm)
+
+
+%imshow(transIm)
 
 % subplot(1,4,1);imshow(WB);
 % title('Orginal')

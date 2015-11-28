@@ -44,9 +44,9 @@ mouthMap = createMouthMap(detectedFace);
 
 transIm = transformImage( eyeMap, whiteBalanced );
 
-% figure
-% imshow(transIm)
-% title('Transformed image');
+figure
+imshow(transIm)
+title('Transformed image');
 
 
 %Use eigenfaces for recognition
