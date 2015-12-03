@@ -17,7 +17,9 @@ Y = YCbCr(:,:,1);
 %Defines the area where the dilation
 %and erotion acts on
 %Which size is best?
-g = strel('disk',15, 8);
+%g = strel('disk',15, 8);
+%g = strel('disk',10, 8);
+g = strel('disk',4, 8);
 
 eyeMapL = (imdilate(Y,g))./(imerode(Y,g) + 1);
 
