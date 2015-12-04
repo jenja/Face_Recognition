@@ -53,7 +53,7 @@ G(MorphFace ~= 1) = 0;
 B(MorphFace ~= 1) = 0;
 
 % Return RGB-chanels to one picture
-Masked_Face = cat(3, R, G, B);
+Masked_Skin = cat(3, R, G, B);
 
 end
 
