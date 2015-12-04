@@ -1,4 +1,4 @@
-function Masked_Face = FaceDetection( im )
+function Masked_Skin = SkinDetection( im )
 % Detectes faces in a picture and returns a new picture with the background
 % masked.
 
