@@ -22,7 +22,7 @@ for i = 1:M
         if i == 10
             % Ignore image, dont work right now
         else
-        im = imread(sprintf('DB1/db1_%d.jpg', i));
+            im = imread(sprintf('DB1/db1_%d.jpg', i));
         end
     end
    
