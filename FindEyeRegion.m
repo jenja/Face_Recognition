@@ -6,10 +6,12 @@ function EyeRegion = FindEyeRegion( FaceRegion )
 
 EyeDetect = vision.CascadeObjectDetector('EyePairBig');
 
+% Find borders
 BB = step(EyeDetect, FaceRegion);
 
 centerX = BB(1,1)+BB(1,3)/2;
 centerY = BB(1,2)+BB(1,4)/2;
+
 % Define parameters of the rectangle
 windowWidth = BB(1,3);
 windowHeight = BB(1,4);
@@ -18,6 +20,7 @@ windowHeight = BB(1,4);
 [yy, xx] = ndgrid((1:rNum)-centerY, (1:cNum)-centerX);
 mask = xx < -windowWidth/2 | xx > windowWidth/2 | ...
     yy < -windowHeight/2 | yy > windowHeight/2;
+
 % Mask image and show it
 EyeRegion = im2double(FaceRegion);
 mask = ~mask;

@@ -1,27 +1,25 @@
-function transIm = transformImage( map, im )
+function transIm = transformImage( bweyeMap, im )
 % TRANSFORM IMAGE
 %   Transform the image, inputs are the image and the eye map. 
 %   The transformations is rotation, rotation and scaling
 
-% Convert to binary image
-%bweyeMap = im2bw(map, 0.3);
-bweyeMap = map;
+
 % Get size of row and column
 [row, col] = size(bweyeMap);
 
 % Find circles
-stats = regionprops('table',bweyeMap,'Centroid', 'MajorAxisLength','MinorAxisLength');
+stats = regionprops(bweyeMap,'Centroid', 'MajorAxisLength','MinorAxisLength');
 
 % Sort table by eyesize
-table = sortrows(stats, 3, 'descend')
-table = sortrows(table(1:2, :), 1);
+TableStats = sortrows(struct2table(stats), 3, 'descend');
+TableStats = sortrows(TableStats(1:2, :), 1);
 
 % Array of the eyes
-eyeArray = round(table2array(table(1:2, 1)));
+eyeArray = round(table2array(TableStats(1:2, 1)));
 
+% Varibales for left and right eye
 leftEye = eyeArray(1, :);
 rightEye = eyeArray(2, :);
-
 
 % Find the koordinate of the midpoint between the eyes
 eyeMid = round(leftEye + (rightEye - leftEye)/2);
@@ -46,16 +44,14 @@ leVec(1,3) = 0;
 % Calculate the angle it need to rotare to get the eyes side by side
 theta = atan2(norm(cross(rlVec, leVec)),dot(rlVec, leVec));
 
-dot(rlVec,leVec)
+% If the rotation is clockwise
 if dot(rlVec,leVec) < 0
      theta = -theta;
 end
 
-
-%figure; imshow(im)
 % Rorate image
 rotim = imrotate(imTrans,theta, 'bilinear', 'crop');
-%figure; imshow(rotim)
+
 % Prefered lenght between the eyes 
 prefLenght = 50;
 

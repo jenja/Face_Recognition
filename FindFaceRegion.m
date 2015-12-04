@@ -4,6 +4,13 @@ function FaceRegion = FindFaceRegion( im )
 
 FDetect = vision.CascadeObjectDetector;
 %Returns Bounding Box values based on number of objects
+
+% Histagram EQ
+% [X, map] = rgb2ind(im, 255);
+% newmap = histeq(X, map); 
+% im = ind2rgb(X,newmap);
+
+
 BB = step(FDetect,im);
 BB = sortrows(BB, -3);
 BB = BB(1,:);
@@ -13,6 +20,7 @@ BB = BB(1,:);
 
 RecEdgeX = BB(1,1)+BB(1,3)/2;
 RecEdgeY = BB(1,2)+BB(1,4)/2;
+
 % Define parameters of the rectangle
 windowWidth = 0.75*BB(1,3);
 windowHeight = 0.9*BB(1,4);

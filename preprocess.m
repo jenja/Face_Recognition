@@ -6,7 +6,6 @@ function outIm = preprocess( im )
 %Dimension variables for the desired cropped image
 minRows = 450;
 minCols = 350;
-outIm = zeros(minRows, minCols, 3);
 
 % FACE DETECTION
 %--------------------------------------------------------------------------
@@ -42,11 +41,12 @@ eyeMapL = createEyeMapL(EyeRegion); %Luminance
 
 %Combine the eye maps
 eyeMap = eyeMapC.*eyeMapL;
-%eyeMap = histeq(eyeMap);
-figure; imshow(eyeMap)
+
+%figure; imshow(eyeMap)
+
 %Filter eyemap
 FilteredEyeRegion = FilterEyeRegion( eyeMap );
-figure; imshow(FilteredEyeRegion)
+%figure; imshow(FilteredEyeRegion)
 
 %Create mouthMap, not yet used
 %mouthMap = createMouthMap(detectedFace);
