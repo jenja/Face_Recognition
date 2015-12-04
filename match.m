@@ -37,7 +37,8 @@ for i = 1:14
    end
 end
 
-threshold = 1000;
+%choose a better threshold?
+threshold = 7000;
 if winner > threshold
     index = 0;
 end
