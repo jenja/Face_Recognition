@@ -14,9 +14,8 @@ area = 10;
 imgDB = zeros(minRows*minCols, M);
 hDB = zeros(minRows/area * minCols/area * 256, M);
 F = imgDB;
+H = zeros(256, minRows/area * minCols/area);
 
-
-H = zeros(256, minRows/10 * minCols/area);
 % Read in all images from the database
 % Preprocess them 
 for i = 1:M
@@ -26,7 +25,7 @@ for i = 1:M
         if i == 10
             % Ignore image, dont work right now
         else
-        im = imread(sprintf('DB1/db1_%d.jpg', i));
+            im = imread(sprintf('DB1/db1_%d.jpg', i));
         end
     end
    
@@ -70,7 +69,7 @@ end
 [U,S,~] = svd(hDB,0);
 
 %Calculate the weigths
-w = (imgDB'*U)';
+w = (hDB'*U)';
 
 %Save weigths to a file
 save('weights.mat','w');
