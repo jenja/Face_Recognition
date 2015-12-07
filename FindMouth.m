@@ -23,7 +23,7 @@ bwmouth = imdilate(bwmouth, se);
 bwmouth = imdilate(bwmouth, se2);
 
 
-imshow(bwmouth)
+%imshow(bwmouth)
 title('Image with Circles')
 
 %cc = bwconncomp(bwmouth); 

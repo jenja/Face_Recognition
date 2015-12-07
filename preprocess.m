@@ -2,7 +2,7 @@ function outIm = preprocess( im )
 % PREPOCESS
 %   This function preprocess the image for recognition. This includes face
 %   detection, features detection, face alignment and cropping.
-    
+
 %Dimension variables for the desired cropped image
 minRows = 450;
 minCols = 350;
@@ -22,15 +22,18 @@ wbDiv = GrayWorldDiv(WB);
 
 whiteBalanced = BestIm(imDiv, wbDiv, im, WB);
 
+%whiteBalanced = hist( whiteBalanced );
+
 %Find face region
 Face = FindFaceRegion( whiteBalanced );
+%figure; imshow(Face)
 
 %Find eye region
 EyeRegion = FindEyeRegion( Face );
 
 %Detect face in image im
 detectedSkin = SkinDetection(Face);
-
+%figure; imshow(FilteredEyeRegion)
 
 % FEATURES DETECTION: Eye map and Mouth map
 %--------------------------------------------------------------------------
@@ -41,7 +44,6 @@ eyeMapL = createEyeMapL(EyeRegion); %Luminance
 
 %Combine the eye maps
 eyeMap = eyeMapC.*eyeMapL;
-
 %figure; imshow(eyeMap)
 
 %Filter eyemap
@@ -57,14 +59,17 @@ FilteredEyeRegion = FilterEyeRegion( eyeMap );
 %in at the same place. The output image has the same size
 %as the input image
 transIm = transformImage( FilteredEyeRegion, whiteBalanced );
-
+%transIm = transformImage( eyeMap, whiteBalanced );
+%figure; imshow(transIm)
 % CROP
 %--------------------------------------------------------------------------
  %Crop all images to equal size
 [row,col,~] = size(transIm);
 
 transIm = double(rgb2gray(transIm));
-outIm = imcrop(transIm, [ ceil(col/2 - minCols/2) ceil(row/2 - minRows/2) (minCols-1) (minRows-1)] );
+outIm = imcrop(transIm, [ ceil(col/2 - minCols/2) ceil(row/2 - minRows/5) (minCols-1) (minRows-1)] );
+
+%figure; imshow(outIm)
 
 end
 

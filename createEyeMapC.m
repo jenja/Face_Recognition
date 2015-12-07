@@ -3,7 +3,7 @@ function eyeMapC = createEyeMapC( im )
 %an input image im, return the found eye map
 %The input image should already has a face detected
 
-close all
+%close all
 
 %im = whitebalance(im);
 
