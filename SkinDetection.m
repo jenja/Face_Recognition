@@ -1,4 +1,4 @@
-function Masked_Face = FaceDetection( im )
+function Masked_Skin = SkinDetection( im )
 % Detectes faces in a picture and returns a new picture with the background
 % masked.
 
@@ -53,7 +53,7 @@ G(MorphFace ~= 1) = 0;
 B(MorphFace ~= 1) = 0;
 
 % Return RGB-chanels to one picture
-Masked_Face = cat(3, R, G, B);
+Masked_Skin = cat(3, R, G, B);
 
 end
 

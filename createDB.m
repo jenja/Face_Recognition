@@ -1,25 +1,42 @@
-%Run the first time, or if changing the DB,
-%to create the training set. This will create 
-%two matrices with weights and 
-%eigenvectors which are loaded into match.m
+% CREATE DATABASE
+%   Run the first time, or if changing the DB,
+%   to create the training set. This will create 
+%   two matrices with weights and 
+%   eigenvectors which are loaded into match.m
 
 close all;
 
-M = 14;
-p = 303*241;
-imgDB = zeros(p, M);
+
+M = 16;
+minRows = 450;
+minCols = 350;
+imgDB = zeros(minRows*minCols, M);
 F = imgDB;
 
 % Read in all images from the database
-% and make gray
+% Preprocess them 
 for i = 1:M
     if i < 10
-        imgDB(:,i) = reshape((rgb2gray(imread...
-            (sprintf('ps/db1_0%d.jpg', i)))), [], 1);
+        im = imread(sprintf('DB1/db1_0%d.jpg', i));
     else
-        imgDB(:,i) = reshape((rgb2gray(imread...
-            (sprintf('ps/db1_%d.jpg', i)))), [], 1);
+        if i == 10
+            % Ignore image, dont work right now
+        else
+        im = imread(sprintf('DB1/db1_%d.jpg', i));
+        end
     end
+   
+    %Preprocess image 
+    resIm =preprocess(im);
+    [row,col,~] = size(resIm);
+
+    %Make grayscale and resize the image to an array
+    resIm = reshape(resIm, [], 1);
+    
+    %Save into imgDB, which will contain all images in DB1
+    %Stored as arrays
+    imgDB(:,i) = resIm;
+    
 end
 
 %Calculate the average face
