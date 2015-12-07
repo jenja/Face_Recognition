@@ -3,23 +3,43 @@ function transIm = transformImage( bweyeMap, im )
 %   Transform the image, inputs are the image and the eye map. 
 %   The transformations is rotation, rotation and scaling
 
-
 % Get size of row and column
 [row, col] = size(bweyeMap);
 
 % Find circles
-stats = regionprops(bweyeMap,'Centroid', 'MajorAxisLength','MinorAxisLength');
+% stats = regionprops(bweyeMap,'Centroid', 'MajorAxisLength','MinorAxisLength');
+% 
+% centers = stats.Centroid;
+% diameters = mean([stats.MajorAxisLength stats.MinorAxisLength],2);
+% radii = diameters/2;
+% 
+% imshow(bweyeMap)
+% % Plot the circles
+% hold on
+% viscircles(centers,radii);
+% hold off
+% 
+% % Sort table by eyesize
+% TableStats = sortrows(struct2table(stats), 3, 'descend');
+% TableStats = sortrows(TableStats(1:2, :), 1);
+% 
+% % Array of the eyes
+% eyeArray = round(table2array(TableStats(1:2, 1)));
+%
+% % Varibales for left and right eye
+% leftEye = eyeArray(1, :);
+% rightEye = eyeArray(2, :);
 
-% Sort table by eyesize
-TableStats = sortrows(struct2table(stats), 3, 'descend');
-TableStats = sortrows(TableStats(1:2, :), 1);
+% Find circles in the images
+[centers, radii, ~] = imfindcircles(bweyeMap,[1 100]);
 
-% Array of the eyes
-eyeArray = round(table2array(TableStats(1:2, 1)));
+TableStats = centers;
+TableStats(:, 3) = radii;
+TableStats = sortrows(TableStats, 1);
 
 % Varibales for left and right eye
-leftEye = eyeArray(1, :);
-rightEye = eyeArray(2, :);
+leftEye = TableStats(1, :);
+rightEye = TableStats(end, :);
 
 % Find the koordinate of the midpoint between the eyes
 eyeMid = round(leftEye + (rightEye - leftEye)/2);
@@ -53,14 +73,12 @@ end
 rotim = imrotate(imTrans,theta, 'bilinear', 'crop');
 
 % Prefered lenght between the eyes 
-prefLenght = 50;
+prefLenght = 70;
 
 % Scalefactor
 eyeScale = rlVec(1,1)/prefLenght
-%imshow(rotim)
 
 % Scale the image
 transIm = imresize(rotim, eyeScale);
-%transIm = imresize(rotim, eyeScale, 'bicubic');
 
 end

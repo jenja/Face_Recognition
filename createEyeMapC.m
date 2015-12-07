@@ -3,10 +3,6 @@ function eyeMapC = createEyeMapC( im )
 %an input image im, return the found eye map
 %The input image should already has a face detected
 
-%close all
-
-%im = whitebalance(im);
-
 % Change the colorspace to YCbCr
 %This is probebly already done in the tnm034 function
 %later on...but for now we do it here :)
@@ -23,14 +19,8 @@ Cr2 = 1 - Cr;
 
 eyeMapC = (1/3)*(Cb.*Cb +  Cr2.*Cr2 + Cb./Cr );
 
-% figure
-% imshow(eyeMapC)
-% title('EyeMapC');
+% Histogram equalization
+eyeMapC = histeq(eyeMapC); 
 
-
-% figure
-% eyeMapC=histeq(eyeMapC);
-% imshow(eyeMapC)
-% title('Equalized EyeMapC');
 
 end

@@ -1,13 +1,13 @@
-function EyeRegion = FindEyeRegion( FaceRegion )
+function EyeRegion = FindEyeRegion( FaceRegion, im )
 %UNTITLED2 Summary of this function goes here
 %   Detailed explanation goes here
 
-[rNum, cNum, ~] = size(FaceRegion);
+[rNum, cNum, ~] = size(im)
 
 EyeDetect = vision.CascadeObjectDetector('EyePairBig');
 
 % Find borders
-BB = step(EyeDetect, FaceRegion);
+BB = step(EyeDetect, im)
 
 centerX = BB(1,1)+BB(1,3)/2;
 centerY = BB(1,2)+BB(1,4)/2;
@@ -24,9 +24,14 @@ mask = xx < -windowWidth/2 | xx > windowWidth/2 | ...
 % Mask image and show it
 EyeRegion = im2double(FaceRegion);
 mask = ~mask;
-EyeRegion(:,:,1) = EyeRegion(:,:,1).*mask;
-EyeRegion(:,:,2) = EyeRegion(:,:,2).*mask;
-EyeRegion(:,:,3) = EyeRegion(:,:,3).*mask;
+
+% Mask color images
+%EyeRegion(:,:,1) = EyeRegion(:,:,1).*mask;
+%EyeRegion(:,:,2) = EyeRegion(:,:,2).*mask;
+%EyeRegion(:,:,3) = EyeRegion(:,:,3).*mask;
+
+% Mask gray image
+EyeRegion = EyeRegion.*mask;
 
 end
 

@@ -19,7 +19,7 @@ for i = 1:M
     if i < 10
         im = imread(sprintf('DB1/db1_0%d.jpg', i));
     else
-        if i == 10
+        if i == 11
             % Ignore image, dont work right now
         else
         im = imread(sprintf('DB1/db1_%d.jpg', i));

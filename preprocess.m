@@ -2,7 +2,7 @@ function outIm = preprocess( im )
 % PREPOCESS
 %   This function preprocess the image for recognition. This includes face
 %   detection, features detection, face alignment and cropping.
-
+close all
 %Dimension variables for the desired cropped image
 minRows = 450;
 minCols = 350;
@@ -28,9 +28,6 @@ whiteBalanced = BestIm(imDiv, wbDiv, im, WB);
 Face = FindFaceRegion( whiteBalanced );
 %figure; imshow(Face)
 
-%Find eye region
-EyeRegion = FindEyeRegion( Face );
-
 %Detect face in image im
 detectedSkin = SkinDetection(Face);
 %figure; imshow(FilteredEyeRegion)
@@ -39,8 +36,9 @@ detectedSkin = SkinDetection(Face);
 %--------------------------------------------------------------------------
 %Use only the detected face when creating the eyeMaps
 %Create eye maps
-eyeMapC = createEyeMapC(EyeRegion); %Chrominance
-eyeMapL = createEyeMapL(EyeRegion); %Luminance
+eyeMapC = createEyeMapC(Face); %Chrominance
+eyeMapL = createEyeMapL(Face); %Luminance
+%figure; imshow(eyeMapC); figure; imshow(eyeMapL)
 
 %Combine the eye maps
 eyeMap = eyeMapC.*eyeMapL;
@@ -50,6 +48,9 @@ eyeMap = eyeMapC.*eyeMapL;
 FilteredEyeRegion = FilterEyeRegion( eyeMap );
 %figure; imshow(FilteredEyeRegion)
 
+EyeRegion = FindEyeRegion( FilteredEyeRegion, Face );
+figure; imshow(EyeRegion)
+
 %Create mouthMap, not yet used
 %mouthMap = createMouthMap(detectedFace);
 
@@ -58,8 +59,8 @@ FilteredEyeRegion = FilterEyeRegion( eyeMap );
 %Use the maps to scale the image so all eyes are placed 
 %in at the same place. The output image has the same size
 %as the input image
-transIm = transformImage( FilteredEyeRegion, whiteBalanced );
-%transIm = transformImage( eyeMap, whiteBalanced );
+transIm = transformImage( EyeRegion, whiteBalanced );
+%transIm = transformImage( FilteredEyeRegion, Face );
 %figure; imshow(transIm)
 % CROP
 %--------------------------------------------------------------------------
@@ -67,9 +68,9 @@ transIm = transformImage( FilteredEyeRegion, whiteBalanced );
 [row,col,~] = size(transIm);
 
 transIm = double(rgb2gray(transIm));
-outIm = imcrop(transIm, [ ceil(col/2 - minCols/2) ceil(row/2 - minRows/5) (minCols-1) (minRows-1)] );
+outIm = imcrop(transIm, [ ceil(col/2 - minCols/2) ceil(row/2 - minRows/3) (minCols-1) (minRows-1)] );
 
-%figure; imshow(outIm)
+figure; imshow(outIm)
 
 end
 
