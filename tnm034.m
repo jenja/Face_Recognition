@@ -10,9 +10,12 @@ close all
 processedIm = preprocess(im);
 
 %Use eigenfaces for recognition
-%return the id of the image
-%0 = no mathch
-id = match(processedIm);
+% id = EFmatch(processedIm);
 
+%Use LPQ for recognition
+id = LPQmatch(processedIm);
+
+%return the id of the image
+%0 = no match
 end
 
