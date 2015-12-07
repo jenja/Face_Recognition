@@ -56,10 +56,11 @@ rotim = imrotate(imTrans,theta, 'bilinear', 'crop');
 prefLenght = 50;
 
 % Scalefactor
-eyeScale = rlVec(1,1)/prefLenght;
+eyeScale = rlVec(1,1)/prefLenght
 %imshow(rotim)
 
 % Scale the image
-transIm = imresize(rotim, eyeScale, 'bicubic');
+transIm = imresize(rotim, eyeScale);
+%transIm = imresize(rotim, eyeScale, 'bicubic');
 
 end

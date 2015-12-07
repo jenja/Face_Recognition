@@ -13,8 +13,8 @@ bweyeMap = im2bw(map, 0.3);
 bweyeMap(1:(floor(row/4)), :) = 0;
 bweyeMap(floor(2*row/4):row, :) = 0;
 
-figure
-imshow(bweyeMap)
+%figure
+%imshow(bweyeMap)
 
 se = strel('disk', 1);
 se2 = strel('disk', 3);

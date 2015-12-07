@@ -15,6 +15,8 @@ LowestDiv = DivArr(I);
 % otherwise the original 
 if LowestDiv == wbDiv
     im = WB;
+else
+    im = im2double(im);
 end
 
 end
