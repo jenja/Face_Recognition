@@ -2,7 +2,7 @@ function outIm = preprocess( im )
 % PREPOCESS
 %   This function preprocess the image for recognition. This includes face
 %   detection, features detection, face alignment and cropping.
-close all
+%close all
 %Dimension variables for the desired cropped image
 minRows = 450;
 minCols = 350;
@@ -49,7 +49,7 @@ FilteredEyeRegion = FilterEyeRegion( eyeMap );
 %figure; imshow(FilteredEyeRegion)
 
 EyeRegion = FindEyeRegion( FilteredEyeRegion, Face );
-figure; imshow(EyeRegion)
+%figure; imshow(EyeRegion)
 
 %Create mouthMap, not yet used
 %mouthMap = createMouthMap(detectedFace);
@@ -69,7 +69,6 @@ transIm = transformImage( EyeRegion, whiteBalanced );
 
 transIm = double(rgb2gray(transIm));
 outIm = imcrop(transIm, [ ceil(col/2 - minCols/2) ceil(row/2 - minRows/3) (minCols-1) (minRows-1)] );
-
 figure; imshow(outIm)
 
 end
