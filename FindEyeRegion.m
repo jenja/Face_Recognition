@@ -2,12 +2,12 @@ function EyeRegion = FindEyeRegion( FaceRegion, im )
 %UNTITLED2 Summary of this function goes here
 %   Detailed explanation goes here
 
-[rNum, cNum, ~] = size(im)
+[rNum, cNum, ~] = size(im);
 
 EyeDetect = vision.CascadeObjectDetector('EyePairBig');
 
 % Find borders
-BB = step(EyeDetect, im)
+BB = step(EyeDetect, im);
 
 centerX = BB(1,1)+BB(1,3)/2;
 centerY = BB(1,2)+BB(1,4)/2;

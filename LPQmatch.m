@@ -4,8 +4,6 @@ function id = LPQmatch(im)
 %   id = 0 if no match
 %   id = index if match
 
-imshow(im);
-
 %Load training set
 load LPQweights.mat
 load phasevectors.mat
@@ -31,8 +29,7 @@ winner = 99999;
 for i = 1:16
    near = wImg - w(:,i);
    near = sqrt(near'*near);
-   if near < winner 
-       near
+   if near < winner
        winner = near;
        index = i;
    end

@@ -69,7 +69,7 @@ transIm = transformImage( EyeRegion, whiteBalanced );
 
 transIm = double(rgb2gray(transIm));
 outIm = imcrop(transIm, [ ceil(col/2 - minCols/2) ceil(row/2 - minRows/3) (minCols-1) (minRows-1)] );
-figure; imshow(outIm)
+%figure; imshow(outIm);
 
 end
 

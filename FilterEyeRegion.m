@@ -4,7 +4,7 @@ function FilteredRegion = FilterEyeRegion( eyeMap )
 
 TD = 0.75;
 
-maxpixvalue = max(max(eyeMap))
+maxpixvalue = max(max(eyeMap));
 eyeMap(eyeMap<TD*maxpixvalue) = 0;
 bweyeMap = im2bw(eyeMap);
 %FilteredRegion = bweyeMap;
