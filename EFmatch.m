@@ -1,4 +1,4 @@
-function id = EFmatch(im)
+function [id, winner] = EFmatch(im)
 % MATCH
 %   Match image with the database and return an integer.
 %   id = 0 if no match

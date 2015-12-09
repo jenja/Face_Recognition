@@ -1,4 +1,4 @@
-function id = tnm034( im )
+function [id, winner] = tnm034( im )
 % FACE DETECTION AND FACE RECOGNITION
 %   This function detects the face of the input image
 %   and preprocess it for recognition with a set of images.
@@ -7,13 +7,15 @@ function id = tnm034( im )
 %Process the image for recognition, this includes
 %face detection, features detection, face alignment
 %and cropping the image
+im = imrotate(im, 5);
+
 processedIm = preprocess(im);
 
 %Use eigenfaces for recognition
-% id = EFmatch(processedIm);
+[id, winner] = EFmatch(processedIm);
 
 %Use LPQ for recognition
-id = LPQmatch(processedIm);
+% [id, winner] = LPQmatch(processedIm);
 
 %return the id of the image
 %0 = no match

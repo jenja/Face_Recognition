@@ -1,4 +1,4 @@
-function id = LPQmatch(im)
+function [id, winner] = LPQmatch(im)
 % MATCH
 %   Match image with the database and return an integer.
 %   id = 0 if no match
