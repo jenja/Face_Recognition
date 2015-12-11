@@ -1,7 +1,7 @@
 function eyeMapC = createEyeMapC( im )
-%The function should find the chromatic(?) eye map from
-%an input image im, return the found eye map
-%The input image should already has a face detected
+%   This function should find the chromainance eye map from
+%   an input image im, returns the found eye map
+%   The input image should already have a face detected
 
 % Change the colorspace to YCbCr
 %This is probebly already done in the tnm034 function
