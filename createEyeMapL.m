@@ -1,5 +1,5 @@
 function eyeMapL = createEyeMapL( im )
-%The function should find the luma(?) eye map from
+%The function should find the luminance eye map from
 %an input image im, return the found eye map
 
 % Change the colorspace to YCbCr
