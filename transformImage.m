@@ -12,7 +12,7 @@ function transIm = transformImage( bweyeMap, im )
 %   The transformations is rotation, rotation and scaling
 
 % Get size of row and column
-[row, col] = size(bweyeMap);
+[~, col] = size(bweyeMap);
 
 % Find circles in the images
 [centers, radii, ~] = imfindcircles(bweyeMap,[1 100]);
