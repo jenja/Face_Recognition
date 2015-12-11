@@ -1,7 +1,16 @@
-function white_balanced = GrayWorld( im )
-%UNTITLED Summary of this function goes here
-%   Detailed explanation goes here
+% TNM034 - ADVANCED IMAGE PROCESSING
+% Isabell Jansson            isaja187
+% Ronja Grosz                rongr946
+% Christoffer Engelbrektsson chren574
+% Jens Jakobsson             jenja698
+% 2015-12-11
+%------------------------------------
 
+function white_balanced = GrayWorld( im )
+% White balance the images
+%  Should be used if the images is suppose to be average gray
+
+% Convert to double
 d_im = im2double(im);
 
 % Average value for red, greed and blue 
@@ -17,7 +26,7 @@ aR = avgGrey/avgR;
 aG = avgGrey/avgG;
 aB = avgGrey/avgB;
 
-[x, y, z]=size(im);
+[x, y, ~] = size(im);
 
 % Adjustiment the channels
 for i=1:x

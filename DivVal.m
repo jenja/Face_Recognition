@@ -1,6 +1,13 @@
-function div = GrayWorldDiv( im )
-%UNTITLED Summary of this function goes here
-%   Detailed explanation goes here
+function div = DivVal( im )
+%Function to calculate the diviation from 1
+%  If it diviated to much, ignore Gray world 
+% TNM034 - ADVANCED IMAGE PROCESSING
+% Isabell Jansson            isaja187
+% Ronja Grosz                rongr946
+% Christoffer Engelbrektsson chren574
+% Jens Jakobsson             jenja698
+% 2015-12-11
+%------------------------------------
 
 % Convert to HSV
 HSV = rgb2hsv(im);
@@ -23,10 +30,6 @@ Threshold = V2(pixels);
 
 % Making a mask
 Mask=V>Threshold;
-
-% A check to be sure the numbner of pixels is correct 
-%[r,c, z]=size(im);
-%pro = sum(sum(Mask))/(r*c);
 
 % Mask the different channels
 H(~Mask) = 0;

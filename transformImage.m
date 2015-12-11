@@ -1,10 +1,18 @@
+% TNM034 - ADVANCED IMAGE PROCESSING
+% Isabell Jansson            isaja187
+% Ronja Grosz                rongr946
+% Christoffer Engelbrektsson chren574
+% Jens Jakobsson             jenja698
+% 2015-12-11
+%------------------------------------
+
 function transIm = transformImage( bweyeMap, im )
 % TRANSFORM IMAGE
 %   Transform the image, inputs are the image and the eye map. 
 %   The transformations is rotation, rotation and scaling
 
 % Get size of row and column
-[row, col] = size(bweyeMap);
+[~, col] = size(bweyeMap);
 
 % Find circles in the images
 [centers, radii, ~] = imfindcircles(bweyeMap,[1 100]);
@@ -38,9 +46,8 @@ eyeScale = rlVec(1,1)/prefLenght;
 
 % Scale the image
 scaleIm = imresize(im, eyeScale);
-
+% Scale the map
 SBW = imresize(bweyeMap, eyeScale);
-
 
 % Calculate the angle it need to rotare to get the eyes side by side
 theta = atan2(norm(cross(rlVec, leVec)),dot(rlVec, leVec));
@@ -53,11 +60,13 @@ end
 % Rorate image
 rotIm = imrotate(scaleIm,theta, 'bilinear', 'crop');
 
+% Rotate the map
 SRBW = imrotate(SBW,theta, 'bilinear', 'crop');
 
-
+% Finds circles with a radius from 1 to 100
 [SRcenters, SRradii, ~] = imfindcircles(SRBW,[1 100]);
 
+% Create a array with the found circles and sort it
 SRTableStats = SRcenters;
 SRTableStats(:, 3) = SRradii;
 SRTableStats = sortrows(SRTableStats, 1);
@@ -77,6 +86,5 @@ SReyeMoveY = round(SRrow/2) - round(SReyeMid(1,2));
 
 % Translate the midpoint of the eye to the middle of the image
 transIm = imtranslate(rotIm,[round(SReyeMoveX), round(SReyeMoveY)]);
-
 
 end
