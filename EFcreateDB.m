@@ -52,6 +52,8 @@ end
 %S: Eigenvalues in the diagonal, sorted
 [U,S,~] = svd(F,0);
 
+imshow(reshape(U(:,9), 450, 350), []);
+
 %Calculate the weigths
 w = (imgDB'*U)';
 

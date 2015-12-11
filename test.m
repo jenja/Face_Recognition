@@ -64,7 +64,7 @@ for i = 1:16
         end
     end
 end
-
+%%
 %Loop through DB2
 T(end+1,1) = 0;
 T(end,2) = 0;

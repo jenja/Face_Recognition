@@ -7,15 +7,28 @@ function [id, winner] = tnm034( im )
 %Process the image for recognition, this includes
 %face detection, features detection, face alignment
 %and cropping the image
-im = imrotate(im, 5);
+
+% ill +30
+% im = 1.3*im;
+% im(im > 255) = 255;
+% ill -30
+% im = 0.7*im;
+% +5% rot
+% im = imrotate(im, 5);
+% -5% rot
+% im = imrotate(im, -5);
+% +10 scale
+% im = imresize(im, 1.1);
+% -10 scale
+im = imresize(im, 0.9);
 
 processedIm = preprocess(im);
 
 %Use eigenfaces for recognition
-[id, winner] = EFmatch(processedIm);
+% [id, winner] = EFmatch(processedIm);
 
 %Use LPQ for recognition
-% [id, winner] = LPQmatch(processedIm);
+[id, winner] = LPQmatch(processedIm);
 
 %return the id of the image
 %0 = no match

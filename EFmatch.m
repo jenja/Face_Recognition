@@ -22,7 +22,7 @@ for i = 1:16
 end
 
 %Threshold may not be correct, but works fine for now
-threshold = 75.6;
+threshold = 80.0;
 if winner > threshold
     index = 0;
 end
