@@ -15,6 +15,7 @@ function id = tnm034( im )
 %   Which corresponds to the matched image e.g 1 for image 1 in DB1
 %   If 0 was returned, there was no match.
 
+warning('off','all')
 
 %Process the image for recognition, this includes
 %face detection, features detection, face alignment
@@ -26,6 +27,8 @@ processedIm = preprocess(im);
 
 %Use LPQ for recognition
 id = LPQmatch(processedIm);
+
+warning('on','all')
 
 %return the id of the image
 %0 = no match

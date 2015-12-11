@@ -1,6 +1,3 @@
-function im = LowestDivVal( imDiv, wbDiv, im, WB )
-% Checks which images deviation value 
-%   Images vid a deviation value closest to 1 is returned
 % TNM034 - ADVANCED IMAGE PROCESSING
 % Isabell Jansson            isaja187
 % Ronja Grosz                rongr946
@@ -9,6 +6,9 @@ function im = LowestDivVal( imDiv, wbDiv, im, WB )
 % 2015-12-11
 %------------------------------------
 
+function im = LowestDivVal( imDiv, wbDiv, im, WB )
+% Checks which images deviation value 
+%   Images vid a deviation value closest to 1 is returned
 
 % Put the vaules in an array
 DivArr = [imDiv wbDiv];
