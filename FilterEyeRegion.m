@@ -1,18 +1,22 @@
 function FilteredRegion = FilterEyeRegion( eyeMap )
-%UNTITLED3 Summary of this function goes here
-%   Detailed explanation goes here
+%Filter the image from noice
+%   Indata: Eyemap
 
+% Threshold
 TD = 0.75;
 
+% Find the maximun intensity value
 maxpixvalue = max(max(eyeMap));
-eyeMap(eyeMap<TD*maxpixvalue) = 0;
-bweyeMap = im2bw(eyeMap);
-%FilteredRegion = bweyeMap;
 
+% Set pixels with values below the threshold to black
+eyeMap(eyeMap<TD*maxpixvalue) = 0;
+
+% Convert to binary image
+bweyeMap = im2bw(eyeMap);
+
+% Dialate the image
 se = strel('disk',4);
 FilteredRegion = imdilate(bweyeMap, se);
-
-
 
 end
 

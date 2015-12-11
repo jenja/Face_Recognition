@@ -1,6 +1,6 @@
-function im = BestIm( imDiv, wbDiv, im, WB )
-%UNTITLED2 Summary of this function goes here
-%   Detailed explanation goes here
+function im = LowestDivVal( imDiv, wbDiv, im, WB )
+% Checks which images deviation value 
+%   Images vid a deviation value closest to 1 is returned
 
 % Put the vaules in an array
 DivArr = [imDiv wbDiv];

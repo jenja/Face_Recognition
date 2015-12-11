@@ -1,6 +1,6 @@
 function FaceRegion = FindFaceRegion( im )
-%UNTITLED Summary of this function goes here
-%   Detailed explanation goes here
+%Detect the face in the image
+%   Viola-Jones algorthm is used
 
 FDetect = vision.CascadeObjectDetector;
 

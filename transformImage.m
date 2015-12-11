@@ -38,9 +38,8 @@ eyeScale = rlVec(1,1)/prefLenght;
 
 % Scale the image
 scaleIm = imresize(im, eyeScale);
-
+% Scale the map
 SBW = imresize(bweyeMap, eyeScale);
-
 
 % Calculate the angle it need to rotare to get the eyes side by side
 theta = atan2(norm(cross(rlVec, leVec)),dot(rlVec, leVec));
@@ -53,11 +52,13 @@ end
 % Rorate image
 rotIm = imrotate(scaleIm,theta, 'bilinear', 'crop');
 
+% Rotate the map
 SRBW = imrotate(SBW,theta, 'bilinear', 'crop');
 
-
+% Finds circles with a radius from 1 to 100
 [SRcenters, SRradii, ~] = imfindcircles(SRBW,[1 100]);
 
+% Create a array with the found circles and sort it
 SRTableStats = SRcenters;
 SRTableStats(:, 3) = SRradii;
 SRTableStats = sortrows(SRTableStats, 1);
@@ -77,6 +78,5 @@ SReyeMoveY = round(SRrow/2) - round(SReyeMid(1,2));
 
 % Translate the midpoint of the eye to the middle of the image
 transIm = imtranslate(rotIm,[round(SReyeMoveX), round(SReyeMoveY)]);
-
 
 end

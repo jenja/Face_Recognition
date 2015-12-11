@@ -16,10 +16,10 @@ WB = GrayWorld(im);
 %image or the Gray World-image
 %Checks whatever the origignal or the Gray World-image has the lowest value
 %This value should be as close to one as possible
-imDiv = GrayWorldDiv(im);
-wbDiv = GrayWorldDiv(WB);
+imDiv = DivVal(im);
+wbDiv = DivVal(WB);
 
-whiteBalanced = BestIm(imDiv, wbDiv, im, WB);
+whiteBalanced = LowestDivVal(imDiv, wbDiv, im, WB);
 
 %whiteBalanced = hist( whiteBalanced );
 

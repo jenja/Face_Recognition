@@ -1,6 +1,6 @@
 function EyeRegion = FindEyeRegion( FaceRegion, im )
-%UNTITLED2 Summary of this function goes here
-%   Detailed explanation goes here
+%Detect the eyes in the image
+%   Viola-Jones algorthm is used
 
 [rNum, cNum, ~] = size(im);
 
@@ -24,11 +24,6 @@ mask = xx < -windowWidth/2 | xx > windowWidth/2 | ...
 % Mask image and show it
 EyeRegion = im2double(FaceRegion);
 mask = ~mask;
-
-% Mask color images
-%EyeRegion(:,:,1) = EyeRegion(:,:,1).*mask;
-%EyeRegion(:,:,2) = EyeRegion(:,:,2).*mask;
-%EyeRegion(:,:,3) = EyeRegion(:,:,3).*mask;
 
 % Mask gray image
 EyeRegion = EyeRegion.*mask;
