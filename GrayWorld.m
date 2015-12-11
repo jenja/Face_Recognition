@@ -1,3 +1,11 @@
+% TNM034 - ADVANCED IMAGE PROCESSING
+% Isabell Jansson            isaja187
+% Ronja Grosz                rongr946
+% Christoffer Engelbrektsson chren574
+% Jens Jakobsson             jenja698
+% 2015-12-11
+%------------------------------------
+
 function white_balanced = GrayWorld( im )
 % White balance the images
 %  Should be used if the images is suppose to be average gray

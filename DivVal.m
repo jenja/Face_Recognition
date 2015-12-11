@@ -1,6 +1,13 @@
 function div = DivVal( im )
 %Function to calculate the diviation from 1
 %  If it diviated to much, ignore Gray world 
+% TNM034 - ADVANCED IMAGE PROCESSING
+% Isabell Jansson            isaja187
+% Ronja Grosz                rongr946
+% Christoffer Engelbrektsson chren574
+% Jens Jakobsson             jenja698
+% 2015-12-11
+%------------------------------------
 
 % Convert to HSV
 HSV = rgb2hsv(im);
