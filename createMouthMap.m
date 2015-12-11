@@ -1,3 +1,11 @@
+% TNM034 - ADVANCED IMAGE PROCESSING
+% Isabell Jansson            isaja187
+% Ronja Grosz                rongr946
+% Christoffer Engelbrektsson chren574
+% Jens Jakobsson             jenja698
+% 2015-12-11
+%------------------------------------
+
 function MouthMap = createMouthMap( im )
 % Returns a map for the mouth in the picture
 % An input image im, return the found eye map

@@ -1,3 +1,11 @@
+% TNM034 - ADVANCED IMAGE PROCESSING
+% Isabell Jansson            isaja187
+% Ronja Grosz                rongr946
+% Christoffer Engelbrektsson chren574
+% Jens Jakobsson             jenja698
+% 2015-12-11
+%------------------------------------
+
 function Masked_Skin = SkinDetection( im )
 % Detectes faces in a picture and returns a new picture with the background
 % masked.

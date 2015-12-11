@@ -1,8 +1,16 @@
+% TNM034 - ADVANCED IMAGE PROCESSING
+% Isabell Jansson            isaja187
+% Ronja Grosz                rongr946
+% Christoffer Engelbrektsson chren574
+% Jens Jakobsson             jenja698
+% 2015-12-11
+%------------------------------------
+
 function outIm = preprocess( im )
 % PREPOCESS
 %   This function preprocess the image for recognition. This includes face
 %   detection, features detection, face alignment and cropping.
-%close all
+
 %Dimension variables for the desired cropped image
 minRows = 450;
 minCols = 350;
