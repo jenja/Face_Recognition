@@ -1,7 +1,6 @@
 # Face Recognition
 
-For detecting a face in an image, the color has to be corrected. Gray world is used for white balancing
-the images. The face can be detected by using several algorithms, for example with color space
+Gray world is used for white balancing the images. The face can be detected by using several algorithms, for example with color space
 based algorithms or with the Viola-Jones algorithm. The eyes are extracted by eye maps which are
 used to align the faces. The aligned faces are matched by comparing important features in the faces.
 The relevant features that have been studied are intensity and phase from the Fourier transform. The
