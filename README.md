@@ -17,6 +17,6 @@ For more details about this project, please see the [report](https://cdn.rawgit.
 
 2. You need to change what database your are using in tnm034.m, either line 26 or 29.
 
-3. Load the picture you want to compare with the database. Run the function tnm034(yourimage) with your image as the argument.
+3. Load the picture you want to compare with the database. Run the function tnm034(image) with your image as the argument. If the result is between 1-16, this meants it was successful to recognize the person (and hoppfully got it right). If the result is 0 (zero), then it failed to recognize the person.
 
 This project was made by Isabell Jansson, Christoffer Engelbrektsson, Jens Jakobsson and Ronja Grosz in the course TNM034, Advanced Image Processing at Linköpings University.
