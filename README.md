@@ -9,6 +9,8 @@ have been compared.
 The Eigenface algorithm generally gives the highest matching rate, except from when considering
 blurred images.
 
+Note: this project was created with MATLAB and is required to run it.
+
 For more details about this project, please see the [report](https://cdn.rawgit.com/jenja/Face_Recognition/master/Report/Face_Detection.pdf).
 
 ## How to run:
