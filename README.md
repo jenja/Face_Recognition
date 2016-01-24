@@ -20,6 +20,4 @@ For more details about this project, please see the [report](https://cdn.rawgit.
 
 2. The second step it to load the picture you want to compare with the database. Run the file tnm034(yourimage). (Note that your need to change what database your are using in tnm034.m, either line 26 or 29).
 
-![GitHub Logo](/images/kastbana_v2.png)
-
 This project was made by Isabell Jansson, Christoffer Engelbrektsson, Jens Jakobsson and Ronja Grosz in the course TNM034, Advanced Image Processing at Linköpings University.
