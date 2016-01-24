@@ -18,7 +18,7 @@ For more details about this project, please see the [report](https://cdn.rawgit.
 
 1. First you need to create a database by either using Eigenfaces or Local Phase Quantization. Run the file EFcreateDB.m or LPQcreateDB.m in matlab. (Note that if you want to use you own pictures you need to change the load function in the create database files, for now we are loading the pictures from DB1).
 
-2. You need to change what database your are using in tnm034.m, either line 26 or 29
+2. You need to change what database your are using in tnm034.m, either line 26 or 29.
 
 3. Load the picture you want to compare with the database. Run the function tnm034(yourimage) with your image as the argument.
 
